@@ -1,0 +1,68 @@
+
+<form (ngSubmit)="insertColisData()">
+    <div>
+        <h3>Enregistrer un Colis </h3>
+    </div>
+    <div class="form-group">
+        <label for="designation_colis">Désignation du Colis </label>
+        <input type="text" name="designation_colis" class="text form-control" required [(ngModel)]="colis.designation_colis">
+    </div>
+    <div class="form-group">
+        <label for="poids_colis">Poids du Colis </label>
+        <input type="text" name="poids_colis" class="text form-control" required [(ngModel)]="colis.poids_colis">
+    </div>
+    <div class="form-group">
+        <label for="volume_colis">Volume du Colis </label>
+        <input type="text" name="volume_colis" class="text form-control" required [(ngModel)]="colis.volume_colis">
+    </div>
+    <div class="form-group">
+        <label for="nom_expediteur">Nom de l'expediter </label>
+        <input type="text" name="nom_expediteur" class="text form-control" required [(ngModel)]="colis.nom_expediteur">
+    </div>
+    <div class="form-group">
+        <label for="image_colis">Image Colis </label>
+        <input type="file" name="image_colis" class="file form-control" required [(ngModel)]="colis.image_colis">
+    </div>
+    <div class="form-group">
+        <label for="client_id">Identifient du Client </label>
+        <input type="text" name="client_id" class="text form-control" required [(ngModel)]="colis.client_id">
+    </div>
+    
+    <button class="btn btn-dark btn -sn nt-4">Valider</button>
+</form>
+
+<hr>
+
+<div>
+    <h3>
+        Liste des Colis
+    </h3>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Désignantion du Colis</th>
+            <th scope="col">Poids du Colis</th>
+            <th scope="col">Volume du Colis</th>
+            <th scope="col">Nom de l'expediter</th>
+            <th scope="col">Image Colis</th>
+            <th scope="col">Identifient du Client</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let col of coliss">
+            <th scope="row">{{col.id}}</th>
+            <td>{{col.designation_colis}}</td>
+            <td>{{col.poids_colis}}</td>
+            <td>{{col.volume_colis}}</td>
+            <td>{{col.nom_expediteur}}</td>
+            <td>{{col.image_colis}}</td>
+            <td>{{col.client_id}}</td>
+            
+            <td><button class="btn btn-danger btn-sm" (click)="deleteColisData(col.id)">Supprimer</button></td>
+            <td><button class="btn btn-warning btn-sm mx-2" routerLink="../editColis/{{col.id}}">Modifier</button></td>
+        </tr>
+    </tbody>
+</table>

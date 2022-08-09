@@ -1,0 +1,58 @@
+
+<form (ngSubmit)="insertPaquetData()">
+    <div>
+        <h3>Enregistrer un Paquet </h3>
+    </div>
+    <div class="form-group">
+        <label for="liste_colis">Liste de colis </label>
+        <input type="text" name="liste_colis" class="text form-control" required [(ngModel)]="paquet.liste_colis">
+    </div>
+    <div class="form-group">
+        <label for="poids_paquet">Poids du Colis </label>
+        <input type="text" name="poids_paquet" class="text form-control" required [(ngModel)]="paquet.poids_paquet">
+    </div>
+    <div class="form-group">
+        <label for="volume_paquet">Volume du Paquet </label>
+        <input type="text" name="volume_paquet" class="text form-control" required [(ngModel)]="paquet.volume_paquet">
+    </div>
+    <div class="form-group">
+        <label for="image_paquet">Image du Paquet </label>
+        <input type="file" name="image_paquet" class="file form-control" required [(ngModel)]="paquet.image_paquet">
+    </div>
+    
+    
+    <button class="btn btn-dark btn -sn nt-4">Valider</button>
+</form>
+
+<hr>
+
+<div>
+    <h3>
+        Liste des paquets
+    </h3>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Liste de colis</th>
+            <th scope="col">Poids du Colis </th>
+            <th scope="col">Volume du Paquet</th>
+            <th scope="col">Image du Paquet</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let paq of paquets">
+            <th scope="row">{{paq.id}}</th>
+            <td>{{paq.liste_colis}}</td>
+            <td>{{paq.poids_paquet}}</td>
+            <td>{{paq.volume_paquet}}</td>
+            <td>{{paq.image_paquet}}</td>
+            
+            <td><button class="btn btn-danger btn-sm" (click)="deletePaquetData(paq.id)">Supprimer</button></td>
+            <td><button class="btn btn-warning btn-sm mx-2" routerLink="../editPaquet/{{paq.id}}">Modifier</button></td>
+        </tr>
+    </tbody>
+</table>
+
